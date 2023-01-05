@@ -177,6 +177,7 @@ shinyServer(function(input, output) {
       calculated_df_summary <- calculated_df_summary
     } else{
       calculated_df_summary <- left_join(calculated_df_summary, metadata_df())
+      calculated_df_summary <- calculated_df_summary %>% rename(Target = "Name", Target_primer = "Target")
     }
 
     # output final df in list, 1st element for render table, other one for ggplot

@@ -23,7 +23,7 @@ file_input_expression <- fileInput("cq_files",
                                             '.csv'))
 
 # metadata of files containing primer and ID
-file_input_metadata <- fileInput("file_input_md", "Choose csv file of metadata: 1st col target, 2nd col name (optional)",
+file_input_metadata <- fileInput("file_input_md", "Choose csv file of metadata: 1st col Target, 2nd col Name (optional)",
                                  accept = c(
                                    "text/csv",
                                    "text/comma-separated-values,text/plain",
