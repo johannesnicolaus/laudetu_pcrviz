@@ -203,10 +203,10 @@ shinyServer(function(input, output) {
 
   # plot --------------------------------------------------------------------
   output$plot <- renderPlotly({
-    # if (is.null(input$file_input_gex))
-    #   return(NULL)
-    # if (is.null(input$file_input_md))
-    #   return(NULL)
+    if (is.null(input$cq_files))
+      return(NULL)
+    if (is.null(input$file_input_efficiency))
+      return(NULL)
 
     df_final <- calculated_df_list() %>% .[[2]]
 
