@@ -55,6 +55,8 @@ facetcols <- numericInput("facet_cols", "Number of columns for facet", value = 3
 textsize <- sliderInput("textsize_data", "Text size",
                         min = 1, max = 25, value = c(15))
 
+whiskersize <- sliderInput("whiskersize_data", "Whisker width",
+                           min = 0.01, max = 0.5, value = c("0.05"))
 
 # metadata to show on hover
 # metadata_hover <- sliderInput("metadata_hover_data", "Metadata to show upon hover",
@@ -89,7 +91,8 @@ shinyUI(pageWithSidebar(
     ui_control_sample,
     ui_control_sample_replicate,
     ui_genes_select,
-    logfunc,
+    # logfunc,
+    whiskersize,
     facetcols,
     textsize,
     dl_button
