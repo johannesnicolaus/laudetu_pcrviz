@@ -172,7 +172,7 @@ shinyServer(function(input, output) {
                                              sqrt((efficiency_ctrl_gene_1)^(mean_control_1_sample-mean_control_1) * (efficiency_ctrl_gene_2)^(mean_control_2_sample-mean_control_2)))
     calculated_df_summary <- calculated_df %>% group_by(Target, Sample) %>% summarise(mean_RE = mean(RE), sd = sd(RE)) %>% ungroup()
 
-    # TODO combine metadata
+    # combine metadata
     if (is.null(metadata_df())) {
       calculated_df_summary <- calculated_df_summary
     } else{
@@ -219,7 +219,7 @@ shinyServer(function(input, output) {
     # }
 
     # plot
-    fig <- df_final %>% filter(!Target %in% c(input$selected_ctrl_gene_1, input$selected_ctrl_gene_2)) %>%
+    fig <- df_final %>% filter(!Target_primer %in% c(input$selected_ctrl_gene_1, input$selected_ctrl_gene_2)) %>%
       ggplot(aes(x = Sample, y = mean_RE, fill = Sample)) +
       facet_wrap(~ Target, ncol = input$facet_cols) +
       geom_bar(stat = "identity", position = "dodge") +
@@ -229,7 +229,7 @@ shinyServer(function(input, output) {
 
 
     if (input$free_y == T) {
-      fig <- df_final %>% filter(!Target %in% c(input$selected_ctrl_gene_1, input$selected_ctrl_gene_2)) %>%
+      fig <- df_final %>% filter(!Target_primer %in% c(input$selected_ctrl_gene_1, input$selected_ctrl_gene_2)) %>%
         ggplot(aes(x = Sample, y = mean_RE, fill = Sample)) +
         facet_wrap(~ Target, ncol = input$facet_cols, scale = "free_y") +
         geom_bar(stat = "identity", position = "dodge") +
