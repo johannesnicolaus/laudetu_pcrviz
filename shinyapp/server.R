@@ -228,6 +228,16 @@ shinyServer(function(input, output) {
       cowplot::panel_border(color = "black")
 
 
+    if (input$free_y == T) {
+      fig <- df_final %>% filter(!Target %in% c(input$selected_ctrl_gene_1, input$selected_ctrl_gene_2)) %>%
+        ggplot(aes(x = Sample, y = mean_RE, fill = Sample)) +
+        facet_wrap(~ Target, ncol = input$facet_cols, scale = "free_y") +
+        geom_bar(stat = "identity", position = "dodge") +
+        geom_errorbar(aes(ymin=mean_RE-sd, ymax=mean_RE+sd), width=input$whiskersize_data, position=position_dodge(.9)) +
+        cowplot::theme_cowplot(input$textsize_data) + theme(axis.text.x = element_blank()) + ylab("Relative expression (A.U.)") +
+        cowplot::panel_border(color = "black")
+    }
+
     print(ggplotly(fig
                    # , tooltip = c("combined_md")
                    ))

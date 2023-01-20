@@ -73,6 +73,10 @@ ui_control_sample_replicate <- uiOutput("control_sample_replicate")
 # selection for data to show (checklist)
 ui_genes_select <- uiOutput("genes_select")
 
+# free y scale
+ui_free_y <- checkboxInput("free_y", "Free y axis", value = FALSE)
+
+
 # download button
 dl_button <- downloadButton("downloadData", "Download normalized data")
 
@@ -91,6 +95,8 @@ shinyUI(pageWithSidebar(
     ui_control_sample,
     ui_control_sample_replicate,
     ui_genes_select,
+    h5(HTML("<b>Free y axis?</b>")),
+    ui_free_y,
     # logfunc,
     whiskersize,
     facetcols,
